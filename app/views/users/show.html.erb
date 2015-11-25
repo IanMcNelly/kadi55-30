@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Oauth:</strong>
+  <%= @user.oauth_id %>
+</p>
+
+<p>
+  <strong>Secret:</strong>
+  <%= @user.secret %>
+</p>
+
+<p>
+  <strong>Access token:</strong>
+  <%= @user.access_token %>
+</p>
+
+<p>
+  <strong>Expires in:</strong>
+  <%= @user.expires_in %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
