@@ -4,7 +4,7 @@ class WebhookController < ApplicationController
 
   def parse
   	puts "IN webhook parse!"
-
+  	render :nothing => true, status: :ok
   end
 
 end
