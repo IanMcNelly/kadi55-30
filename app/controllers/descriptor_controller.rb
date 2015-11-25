@@ -1,5 +1,5 @@
 class DescriptorController < ApplicationController
-
+skip_before_filter  :verify_authenticity_token
   def index
   	#probably a better way to do this...
   	descriptor = Hash.new
