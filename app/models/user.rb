@@ -28,8 +28,9 @@ class User < ActiveRecord::Base
 			request.set_form_data({"grant_type" => "client_credentials", "scope" => "send_notification view_messages send_message"})
 			request.basic_auth(self.oauth_id, self.secret)
 			response = http.request(request)
-			puts "Got response: " + response
-			response_hash = JSON.parse(result).to_hash
+			puts "Got response: " + response.body
+			response_hash = JSON.parse(response.body).to_hash
+			puts "Hash: " + response_hash
 		end
 
 end
