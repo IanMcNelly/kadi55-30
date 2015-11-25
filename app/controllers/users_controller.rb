@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        render :nothing => true status: :ok
+        render :nothing => true, status: :ok
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
