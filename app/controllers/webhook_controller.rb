@@ -34,8 +34,7 @@ Parameters:
     }
 }
 =end
-	def get_daily
-		client = Destiny::Client.new(@@bungo)
+	def get_daily(client)
 		data = client.daily_report
 		message = "Daily Missions as of #{Time.now}:
 
@@ -59,25 +58,26 @@ Parameters:
   	end
   	room = user.room_id
   	client = HipChat::Client.new(user.access_token, :api_version => 'v2')
+  	desiny = Destiny::Client.new(@@bungo)
   	response = nil
   	color = 'green'
   	case params[:hookname]
   	when "daily"
-  		response = get_daily
+  		response = get_daily(destiny)
   	when "hello"
   		response = "Hello, #{name}. I am Kadi 55-30, Tower Postmaster. I am here to provide you will all requiste information for your trials as a Guardian. Please execute protocol '!help' for further assistance."
   	when "help"
-  		response = "help"
+  		response = "Use !daily, !hello, !help, !item(pending), !light(pending), !nightfall, !strike or !xur. Feedback/issues may be sent to the Hellmouth for processing."
   	when "item"
   		response = "help"
   	when "light"
   		response = "help"
   	when "nightfall"
-  		response = "help"
+  		response = "This weeks NightFall is as follows:\n\n#{destiny.nightfall}"
   	when "strike"
-  		response = "help"
+  		response = "This weeks Strike is as follows:\n\n#{destiny.weekly_strike}"
   	when "xur"
-  		response = "help"
+  		response = "BETA: Xur details are: \n\n #{destiny.xur}"
   	else
   		puts "EXCEPTION! INVALID HOOKNAME: #{params[:hookname]}"
   		client["#{room}"].send('ERR', "EXCEPTION! INVALID HOOKNAME: #{params[:hookname]}", :color => 'red', :notify => true)
