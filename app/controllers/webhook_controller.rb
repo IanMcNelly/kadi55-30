@@ -36,13 +36,13 @@ Parameters:
 =end
 	def get_daily(client)
 		data = client.daily_report
-		message = "Daily Missions as of #{Time.now}:
+		message = "<p>Daily Missions as of #{Time.now}:
 
-		\tStory: #{client.activity_search(data['dailyChapterHashes']).to_s}
+		\tStory: #{client.activity_search(data['dailyChapterHashes'].to_s)}
 		
-		\tCrucible Playlist: #{client.activity_search(data['dailyCrucibleHash']).to_s}
+		\tCrucible Playlist: #{client.activity_search(data['dailyCrucibleHash'].to_s)}
 
-		\tArmsday: #{client.activity_search(data['armsDay']["active"])}"
+		\tArmsday: #{client.activity_search(data['armsDay']["active"].to_s)}</p>"
 
 		message
 	end
@@ -78,13 +78,13 @@ Parameters:
   		response = "help"
   		color = 'yellow'
   	when "nightfall"
-  		response = "This weeks NightFall is as follows:\n\n#{destiny.nightfall}"
+  		response = "This weeks NightFall is as follows:<br><br>#{destiny.nightfall}"
   		color = 'purple'
   	when "strike"
-  		response = "This weeks Strike is as follows:\n\n#{destiny.weekly_strike}"
+  		response = "This weeks Strike is as follows:<br><br>#{destiny.weekly_strike}"
   		color = 'red'
   	when "xur"
-  		response = "BETA: Xur details are: \n\n #{destiny.xur}"
+  		response = "BETA: Xur details are: <br><br> #{destiny.xur}"
   		color = 'gray'
   	else
   		puts "EXCEPTION! INVALID HOOKNAME: #{params[:hookname]}"
