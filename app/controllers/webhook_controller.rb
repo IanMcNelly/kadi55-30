@@ -40,7 +40,7 @@ Parameters:
 
 		\tStory: #{client.activity_search(data['dailyChapterHashes'].first)}
 		
-		\tCrucible Playlist: #{client.activity_search(data['dailyCrucibleHash'].first)}
+		\tCrucible Playlist: #{client.activity_search(data['dailyCrucibleHash'])}
 
 		\tArmsday: #{client.activity_search(data['armsDay']["active"])}</p>"
 
@@ -50,11 +50,10 @@ Parameters:
 	def get_nightfall(client)
 		data = client.daily_report
 		message = "This weeks NightFall is as follows:<br><br>#{client.activity_search(data['nightfall']['specificActivityHash'])}"
-
 		message
 	end
 
-	def get_strinke(client)
+	def get_strike(client)
 		data = client.daily_report
 		message = "This weeks Heroic Strike is as follows:<br><br>#{client.activity_search(data['heroicStrike']['activityBundleHash'])}"
 		message
