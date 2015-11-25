@@ -30,7 +30,10 @@ class User < ActiveRecord::Base
 			response = http.request(request)
 			puts "Got response: " + response.body
 			response_hash = JSON.parse(response.body).to_hash
-			puts "Hash: " + response_hash
+			puts "Hash: " + response_hash.to_s
+			self.access_token = response_hash["access_token"]
+			self.expires_at = Time.now + response_hash["expires_in"]
+			self.save
 		end
 
 end
