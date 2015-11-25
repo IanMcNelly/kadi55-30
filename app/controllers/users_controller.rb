@@ -79,6 +79,6 @@ class UsersController < ApplicationController
       #             "oauthSecret"=>"w0fKHhwizukYzfYFRIiH4IPdaAFG3OIgVl2kXCnh", 
       #             "user"=>{}
       #}
-      params.permit(:oauthId, :capabilitiesUrl, :roomId, :groupId, :oauthSecret)
+      params.permit(:oauthId, :capabilitiesUrl, :roomId, :groupId, :oauthSecret, :user)
     end
 end
