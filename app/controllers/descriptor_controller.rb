@@ -16,8 +16,8 @@ class DescriptorController < ApplicationController
   		}, 
   		:installable => {
   			:allowGlobal => false,
-  			:callback_url => "https://mighty-meadow-7891.herokuapp.com/users",
-  			:uninstalled_url => "https://mighty-meadow-7891.herokuapp.com/users"
+  			:callbackUrl => "https://mighty-meadow-7891.herokuapp.com/users",
+  			:uninstalledUrl => "https://mighty-meadow-7891.herokuapp.com/users"
   		}
   		#:internalChathook
   	}
