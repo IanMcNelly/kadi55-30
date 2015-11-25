@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   #   resources :products
       get     'descriptor' => 'descriptor#index'
   # Access this via params[:oauthid]
-      delete  'descriptor/destroy/:oauthid' => 'descriptor#delete'
-      post    'descriptor/new' => 'descriptor#new'
+      #delete  'descriptor/destroy/:oauthid' => 'descriptor#delete'
+      #post    'descriptor/new' => 'descriptor#new'
   # Example resource route with options:
   #   resources :products do
   #     member do
