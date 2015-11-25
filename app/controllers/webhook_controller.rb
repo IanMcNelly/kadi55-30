@@ -36,7 +36,7 @@ Parameters:
 =end
 
   def parse
-  	puts "In webhook parse, for action: #{params[:action]}"
+  	puts "In webhook parse, for webhook: #{params[:hookname]}"
   	user = User.find_by(:oauth_id => params[:oauth_client_id])
 
   	if Time.at(user.expires_at) <= Time.now
