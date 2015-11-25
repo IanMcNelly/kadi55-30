@@ -17,8 +17,12 @@ class User < ActiveRecord::Base
   	user
   end
 
-	private
+  def self.refresh_token
+  	self.get_token
+  	self
+  end
 
+	private
 		def get_token
 			puts "In Get Token"
 			uri = URI.parse("https://api.hipchat.com/v2/oauth/token")

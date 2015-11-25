@@ -23,9 +23,9 @@
             "name": "Test"
         }, {
             "url": "https://mighty-meadow-7891.herokuapp.com/webhook/hello",
-            "pattern": "^![hH][eE][sS][tT]",
+            "pattern": "^![hH][eE][lL][lL][oO]",
             "event": "room_message",
-            "name": "Test"
+            "name": "Hello"
         }]
     }
 }
