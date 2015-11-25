@@ -20,9 +20,22 @@ class DescriptorController < ApplicationController
   			:allowGlobal => false,
   			:callbackUrl => "https://mighty-meadow-7891.herokuapp.com/users",
   			:uninstalledUrl => "https://mighty-meadow-7891.herokuapp.com/users"
-  		}
+  		},
+      :webhook => {
+        :url => "https://mighty-meadow-7891.herokuapp.com/webhook",
+        :pattern => "^![hH][eE][lL][lL][oO]",
+        :event => "room_message",
+        :name => "Hello"
+      },
+      :webhook => {
+        :url => "https://mighty-meadow-7891.herokuapp.com/webhook",
+        :pattern => "^![tT][eE][sS][tT]",
+        :event => "room_message",
+        :name => "Test"
+      }
   		#:internalChathook
   	}
+
 
   	render :json => descriptor.to_json
   end

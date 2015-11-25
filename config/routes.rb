@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
       get     'descriptor' => 'descriptor#index'
+      get     'webhook' => 'webhook#parse'
   # Access this via params[:oauthid]
       #delete  'descriptor/destroy/:oauthid' => 'descriptor#delete'
       #post    'descriptor/new' => 'descriptor#new'
