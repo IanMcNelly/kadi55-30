@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   def create
 
     result = Net::HTTP.get(URI.parse(user_params[:capabilitiesUrl].to_s.gsub('https:','http:')))
-    if !results.include?("HipChat")
+    if !result.include?("HipChat")
       format.json { render status: :unprocessable_entity }
     end
 
