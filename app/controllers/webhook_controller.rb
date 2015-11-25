@@ -58,26 +58,34 @@ Parameters:
   	end
   	room = user.room_id
   	client = HipChat::Client.new(user.access_token, :api_version => 'v2')
-  	desiny = Destiny::Client.new(@@bungo)
+  	destiny = Destiny::Client.new(@@bungo)
   	response = nil
   	color = 'green'
   	case params[:hookname]
   	when "daily"
   		response = get_daily(destiny)
+  		color = 'red'
   	when "hello"
-  		response = "Hello, #{name}. I am Kadi 55-30, Tower Postmaster. I am here to provide you will all requiste information for your trials as a Guardian. Please execute protocol '!help' for further assistance."
+  		response = "Hello, #{sender}. I am Kadi 55-30, Tower Postmaster. I am here to provide you will all requiste information for your trials as a Guardian. Please execute protocol '!help' for further assistance."
+  		color = 'green'
   	when "help"
   		response = "Use !daily, !hello, !help, !item(pending), !light(pending), !nightfall, !strike or !xur. Feedback/issues may be sent to the Hellmouth for processing."
+  		color = 'yellow'
   	when "item"
   		response = "help"
+  		color = 'green'
   	when "light"
   		response = "help"
+  		color = 'yellow'
   	when "nightfall"
   		response = "This weeks NightFall is as follows:\n\n#{destiny.nightfall}"
+  		color = 'purple'
   	when "strike"
   		response = "This weeks Strike is as follows:\n\n#{destiny.weekly_strike}"
+  		color = 'red'
   	when "xur"
   		response = "BETA: Xur details are: \n\n #{destiny.xur}"
+  		color = 'gray'
   	else
   		puts "EXCEPTION! INVALID HOOKNAME: #{params[:hookname]}"
   		client["#{room}"].send('ERR', "EXCEPTION! INVALID HOOKNAME: #{params[:hookname]}", :color => 'red', :notify => true)
