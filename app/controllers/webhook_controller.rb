@@ -38,12 +38,25 @@ Parameters:
 		data = client.daily_report
 		message = "<p>Daily Missions as of #{Time.now}:
 
-		\tStory: #{client.activity_search(data['dailyChapterHashes'].to_s)}
+		\tStory: #{client.activity_search(data['dailyChapterHashes'].first)}
 		
-		\tCrucible Playlist: #{client.activity_search(data['dailyCrucibleHash'].to_s)}
+		\tCrucible Playlist: #{client.activity_search(data['dailyCrucibleHash'].first)}
 
-		\tArmsday: #{client.activity_search(data['armsDay']["active"].to_s)}</p>"
+		\tArmsday: #{client.activity_search(data['armsDay']["active"])}</p>"
 
+		message
+	end
+
+	def get_nightfall(client)
+		data = client.daily_report
+		message = "This weeks NightFall is as follows:<br><br>#{client.activity_search(data['nightfall']['specificActivityHash'])}"
+
+		message
+	end
+
+	def get_strinke(client)
+		data = client.daily_report
+		message = "This weeks Heroic Strike is as follows:<br><br>#{client.activity_search(data['heroicStrike']['activityBundleHash'])}"
 		message
 	end
 
@@ -78,10 +91,10 @@ Parameters:
   		response = "help"
   		color = 'yellow'
   	when "nightfall"
-  		response = "This weeks NightFall is as follows:<br><br>#{destiny.nightfall}"
+  		response = get_nightfall(destiny)
   		color = 'purple'
   	when "strike"
-  		response = "This weeks Strike is as follows:<br><br>#{destiny.weekly_strike}"
+  		response = get_strike(destiny)
   		color = 'red'
   	when "xur"
   		response = "BETA: Xur details are: <br><br> #{destiny.xur}"
