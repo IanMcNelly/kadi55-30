@@ -48,7 +48,7 @@ Parameters:
   	response = "Sending response to message: #{params[:item][:message][:message]}, from #{params[:item][:message][:from][:name]}"
   	room = user.room_id
   	client = HipChat::Client.new(user.access_token, :api_version => 'v2')
-  	client["#{room}"].send('Kadi 55-30', response, :color => 'green', :notify => true)
+  	client["#{room}"].send('', response, :color => 'green', :notify => true)
 
   	# Thank the nice webhook
   	render :nothing => true, status: :ok
