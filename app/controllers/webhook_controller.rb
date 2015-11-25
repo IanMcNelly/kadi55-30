@@ -42,7 +42,7 @@ Parameters:
 		
 		\tCrucible Playlist: #{client.activity_search(data['dailyCrucibleHash'])}
 
-		\tArmsday: #{client.activity_search(data['armsDay']["active"])}</p>"
+		\tArmsday: #{data['armsDay']['active']}</p>"
 
 		message
 	end
