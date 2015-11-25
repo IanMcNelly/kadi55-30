@@ -67,7 +67,8 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user.destroy
-    render :nothing => true, status: :ok
+    redirect_to('https://coupa.hipchat.com/addons/')
+    #render :nothing => true, status: :ok
   end
 
   private

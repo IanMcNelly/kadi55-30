@@ -1,7 +1,7 @@
 class WebhookController < ApplicationController
   # TODO: Figure out better way to do this
   skip_before_filter  :verify_authenticity_token
-
+  @@bungo = 'ad1d00901ef741baa0bdfeb5d91194c2'
 =begin
 Parameters: 
 {
@@ -34,24 +34,68 @@ Parameters:
     }
 }
 =end
+	def get_daily
+		client = Destiny::Client.new(@@bungo)
+		data = client.daily_report
+		message = "Daily Missions as of #{Time.now}:
+
+		\tStory: #{client.activity_search(data['dailyChapterHashes']).to_s}
+		
+		\tCrucible Playlist: #{client.activity_search(data['dailyCrucibleHash']).to_s}
+
+		\tArmsday: #{client.activity_search(data['armsDay']["active"])}"
+
+		message
+	end
 
   def parse
   	puts "In webhook parse, for webhook: #{params[:hookname]}"
   	user = User.find_by(:oauth_id => params[:oauth_client_id])
-
+  	message = params[:item][:message][:message]
+  	sender = params[:item][:message][:from][:name]
   	if Time.at(user.expires_at) <= Time.now
   		# Token is not valid, need new one
   		user = user.refresh_token
   	end
-
-  	# Send response message to HipChat
-  	response = "Sending response to message: #{params[:item][:message][:message]}, from #{params[:item][:message][:from][:name]}"
   	room = user.room_id
   	client = HipChat::Client.new(user.access_token, :api_version => 'v2')
-  	client["#{room}"].send('', response, :color => 'green', :notify => true)
+  	response = nil
+  	color = 'green'
+  	case params[:hookname]
+  	when "daily"
+  		response = get_daily
+  	when "hello"
+  		response = "Hello, #{name}. I am Kadi 55-30, Tower Postmaster. I am here to provide you will all requiste information for your trials as a Guardian. Please execute protocol '!help' for further assistance."
+  	when "help"
+  		response = "help"
+  	when "item"
+  		response = "help"
+  	when "light"
+  		response = "help"
+  	when "nightfall"
+  		response = "help"
+  	when "strike"
+  		response = "help"
+  	when "xur"
+  		response = "help"
+  	else
+  		puts "EXCEPTION! INVALID HOOKNAME: #{params[:hookname]}"
+  		client["#{room}"].send('ERR', "EXCEPTION! INVALID HOOKNAME: #{params[:hookname]}", :color => 'red', :notify => true)
+  		render :nothing => true, status: :bad_request
+  	end
+  	
+  	response ||= "Sending generic response to message: #{message}, from #{sender}"
+  	# Send response message to HipChat
+  	client["#{room}"].send('', response, :color => color, :notify => true)
 
   	# Thank the nice webhook
   	render :nothing => true, status: :ok
   end
+
+  private
+  	def get_key
+  		key = 'ad1d00901ef741baa0bdfeb5d91194c2'
+  		key
+  	end
 
 end

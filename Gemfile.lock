@@ -55,6 +55,9 @@ GEM
       debugger-ruby_core_source (~> 1.3.5)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.3.8)
+    destiny_rb (0.1.3)
+      httparty (~> 0.13, >= 0.13.5)
+      rake (~> 10.4, >= 10.4.2)
     erubis (2.7.0)
     execjs (2.6.0)
     globalid (0.3.6)
@@ -157,6 +160,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.1.0)
   debugger
+  destiny_rb
   hipchat
   jbuilder (~> 2.0)
   jquery-rails
