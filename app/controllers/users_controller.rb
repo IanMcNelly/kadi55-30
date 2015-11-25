@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+  # TODO: Figure out better way to do this
   skip_before_filter  :verify_authenticity_token
+
   # GET /users
   # GET /users.json
   def index
@@ -69,6 +72,13 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:oauth_id, :secret, :access_token, :expires_in)
+      #Parameters: {"oauthId"=>"10637af2-244f-4f3e-915c-f0021a2c7429", 
+      #             "capabilitiesUrl"=>"https://api.hipchat.com/v2/capabilities", 
+      #             "roomId"=>2199252, 
+      #             "groupId"=>2002, 
+      #             "oauthSecret"=>"w0fKHhwizukYzfYFRIiH4IPdaAFG3OIgVl2kXCnh", 
+      #             "user"=>{}
+      #}
+      params.require(:oauthId, :capabilitiesUrl, :roomId, :groupId, :oauthSecret)
     end
 end
