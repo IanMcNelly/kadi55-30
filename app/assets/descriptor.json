@@ -17,10 +17,40 @@
             "uninstalledUrl": "https://mighty-meadow-7891.herokuapp.com/users"
         },
         "webhook": [{
-            "url": "https://mighty-meadow-7891.herokuapp.com/webhook/test",
-            "pattern": "^![tT][eE][sS][tT]",
+            "url": "https://mighty-meadow-7891.herokuapp.com/webhook/help",
+            "pattern": "^![hH][eE][lL][pP]",
             "event": "room_message",
-            "name": "Test"
+            "name": "Help"
+        }, {
+            "url": "https://mighty-meadow-7891.herokuapp.com/webhook/nightfall",
+            "pattern": "^![nN][iI][gG][hH][tT][fF][aA][lL][lL]",
+            "event": "room_message",
+            "name": "Nightfall"
+        }, {
+            "url": "https://mighty-meadow-7891.herokuapp.com/webhook/strike",
+            "pattern": "^![sS][tT][rR][iI][kK][eE]",
+            "event": "room_message",
+            "name": "Strike"
+        }, {
+            "url": "https://mighty-meadow-7891.herokuapp.com/webhook/daily",
+            "pattern": "^![dD][aA][iI][lL][yY]",
+            "event": "room_message",
+            "name": "Daily"
+        }, {
+            "url": "https://mighty-meadow-7891.herokuapp.com/webhook/xur",
+            "pattern": "^![xX][uU][rR]",
+            "event": "room_message",
+            "name": "Xur"
+        }, {
+            "url": "https://mighty-meadow-7891.herokuapp.com/webhook/light",
+            "pattern": "^![lL][iI][gG][hH][tT]",
+            "event": "room_message",
+            "name": "Light"
+        }, {
+            "url": "https://mighty-meadow-7891.herokuapp.com/webhook/item",
+            "pattern": "^![iI][tT][eE][mM]",
+            "event": "room_message",
+            "name": "Item"
         }, {
             "url": "https://mighty-meadow-7891.herokuapp.com/webhook/hello",
             "pattern": "^![hH][eE][lL][lL][oO]",
