@@ -42,14 +42,11 @@ class UsersController < ApplicationController
                      :room_id => user_params[:roomId], 
                      :secret => user_params[:oauthSecret])
 
-    respond_to do |format|
       if @user.save
         render :nothing => true, status: :ok
       else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        render json: @user.errors, status: :unprocessable_entity
       end
-    end
   end
 
   # PATCH/PUT /users/1
