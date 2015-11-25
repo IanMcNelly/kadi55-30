@@ -1,4 +1,8 @@
+require 'net/http'
+require 'uri'
+
 class UsersController < ApplicationController
+  
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # TODO: Figure out better way to do this
@@ -27,7 +31,12 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    # TODO: Use Net:HTTP.get(user_params[:capabilitiesUrl]) to confirm
+
+    result = Net::HTTP.get(URI.parse(user_params[:capabilitiesUrl].to_s.gsub('https:','http:')))
+    if !results.include?("HipChat")
+      format.json { render status: :unprocessable_entity }
+    end
+
 
     @user = User.new(:oauth_id => user_params[:oauthId], 
                      :room_id => user_params[:roomId], 
