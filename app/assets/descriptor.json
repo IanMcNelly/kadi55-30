@@ -1,1 +1,31 @@
-{"name":"Kadi 55-30","description":"Integration for Hipchat to connect Destiny news and info","key":"com.test.kadi55-30","links":{"homepage":"https://mighty-meadow-7891.herokuapp.com/","self":"https://mighty-meadow-7891.herokuapp.com/descriptor"},"capabilities":{"hipchatApiConsumer":{"fromName":"Kadi 55-30","scopes":["send_notification","view_messages","send_message"]},"installable":{"allowGlobal":false,"callbackUrl":"https://mighty-meadow-7891.herokuapp.com/users","uninstalledUrl":"https://mighty-meadow-7891.herokuapp.com/users"},"webhook":[{"url":"https://mighty-meadow-7891.herokuapp.com/webhook/test","pattern":"^![tT][eE][sS][tT]","event":"room_message","name":"Test"},{"url":"https://mighty-meadow-7891.herokuapp.com/webhook/hello","pattern":"^![hH][eE][sS][tT]","event":"room_message","name":"Test"}]}}
+{
+    "name": "Kadi 55-30",
+    "description": "Integration for Hipchat to connect Destiny news and info",
+    "key": "com.test.kadi55-30",
+    "links": {
+        "homepage": "https://mighty-meadow-7891.herokuapp.com/",
+        "self": "https://mighty-meadow-7891.herokuapp.com/descriptor"
+    },
+    "capabilities": {
+        "hipchatApiConsumer": {
+            "fromName": "Kadi 55-30",
+            "scopes": ["send_notification", "view_messages", "send_message"]
+        },
+        "installable": {
+            "allowGlobal": false,
+            "callbackUrl": "https://mighty-meadow-7891.herokuapp.com/users",
+            "uninstalledUrl": "https://mighty-meadow-7891.herokuapp.com/users"
+        },
+        "webhook": [{
+            "url": "https://mighty-meadow-7891.herokuapp.com/webhook/test",
+            "pattern": "^![tT][eE][sS][tT]",
+            "event": "room_message",
+            "name": "Test"
+        }, {
+            "url": "https://mighty-meadow-7891.herokuapp.com/webhook/hello",
+            "pattern": "^![hH][eE][sS][tT]",
+            "event": "room_message",
+            "name": "Test"
+        }]
+    }
+}
