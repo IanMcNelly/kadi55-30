@@ -22,13 +22,13 @@ class DescriptorController < ApplicationController
   			:uninstalledUrl => "https://mighty-meadow-7891.herokuapp.com/users"
   		},
       :webhook => {
-        :url => "https://mighty-meadow-7891.herokuapp.com/webhook",
+        :url => "https://mighty-meadow-7891.herokuapp.com/webhook/hello",
         :pattern => "^![hH][eE][lL][lL][oO]",
         :event => "room_message",
         :name => "Hello"
       },
       :webhook => {
-        :url => "https://mighty-meadow-7891.herokuapp.com/webhook",
+        :url => "https://mighty-meadow-7891.herokuapp.com/webhook/test",
         :pattern => "^![tT][eE][sS][tT]",
         :event => "room_message",
         :name => "Test"
