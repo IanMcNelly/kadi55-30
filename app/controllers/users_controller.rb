@@ -27,7 +27,6 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    oauth_id | secret | access_token | expires_at | created_at | updated_at | room_id
     # TODO: Use Net:HTTP.get(user_params[:capabilitiesUrl]) to confirm
 
     @user = User.new(:oauth_id => user_params[:oauthId], 
