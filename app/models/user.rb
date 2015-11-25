@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   end
 
   def refresh_token
-  	self.get_token
+  	get_token
   	self
   end
 
