@@ -63,7 +63,7 @@ Parameters:
   	end
 		message = "This weeks NightFall is as follows:<br>
 		<br>
-		<a href='https://bungie.net#{nightfall[:pgcrImage]}'>#{nightfall[:activityName]}</a><br>
+		<img src='https://bungie.net#{nightfall[:pgcrImage]}' alt=#{nightfall[:activityName]}><br>
 		#{nightfall[:activityName]}: #{nightfall[:activityDescription]}<br>
 		Skulls: #{skulls.join(', ')}"
 		message
