@@ -40,12 +40,13 @@ Parameters:
 		crucible = client.activity_search(data['dailyCrucibleHash'])
 		message = "<pre>Daily Missions as of #{Time.now}:
 
-	Story: 
-	  #{story[:activityName]}: #{story[:activityDescription]}
+  Story: 
+	  #{story[:activityName]} - #{story[:activityDescription]}
 	  Skulls: #{story[:skulls].join(', ')}
 		
   Crucible Playlist: 
-    #{crucible[:activityName]}: #{crucible[:activityDescription]}</pre>"
+    #{crucible[:activityName]} - #{crucible[:activityDescription]}
+</pre>"
 
 		#\tArmsday: #{data['armsDay']['active']}</p>"
 
@@ -62,8 +63,7 @@ Parameters:
     	end
   	end
 		message = "This weeks NightFall is as follows:<br>
-		<br>
-		<img src='https://bungie.net#{nightfall[:pgcrImage]}' alt=#{nightfall[:activityName]}><br>
+		<img src=\"http://bungie.net#{nightfall[:pgcrImage]}\"><br>
 		#{nightfall[:activityName]}: #{nightfall[:activityDescription]}<br>
 		Skulls: #{skulls.join(', ')}"
 		message
