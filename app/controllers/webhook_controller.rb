@@ -36,11 +36,16 @@ Parameters:
 =end
 	def get_daily(client)
 		data = client.daily_report
+		story = client.activity_search(data['dailyChapterHashes'].first)
+		crucible = client.activity_search(data['dailyCrucibleHash'])
 		message = "<pre>Daily Missions as of #{Time.now}:
 
-		\tStory: #{client.activity_search(data['dailyChapterHashes'].first)}
+	Story: 
+	  #{story[:activityName]}: #{story[:activityDescription]}
+	  Skulls: #{story[:skulls].join(', ')}
 		
-		\tCrucible Playlist: #{client.activity_search(data['dailyCrucibleHash'])}</pre>"
+  Crucible Playlist: 
+    #{crucible[:activityName]}: #{crucible[:activityDescription]}</pre>"
 
 		#\tArmsday: #{data['armsDay']['active']}</p>"
 
@@ -51,9 +56,11 @@ Parameters:
 		data = client.daily_report
 		nightfall = client.activity_search(data['nightfall']['specificActivityHash'],false)
 		skulls = []
-    nightfall['skulls'].each do |skull|
-      skulls << skull['displayName']
-    end
+		unless nightfall['skulls'].nil? || nightfall['skulls'].empty?
+    	nightfall['skulls'].each do |skull|
+      	skulls << skull['displayName']
+    	end
+  	end
 		message = "This weeks NightFall is as follows:<br>
 		<br>
 		<a href='https://bungie.net#{nightfall[:pgcrImage]}'>#{nightfall[:activityName]}</a><br>
