@@ -27,10 +27,10 @@
             "event": "room_message",
             "name": "Nightfall"
         }, {
-            "url": "https://mighty-meadow-7891.herokuapp.com/webhook/strike",
-            "pattern": "^![sS][tT][rR][iI][kK][eE]",
+            "url": "https://mighty-meadow-7891.herokuapp.com/webhook/crucible",
+            "pattern": "^![cC][rR][uU][cC][iI][bB][lL][eE]",
             "event": "room_message",
-            "name": "Strike"
+            "name": "Crucible"
         }, {
             "url": "https://mighty-meadow-7891.herokuapp.com/webhook/daily",
             "pattern": "^![dD][aA][iI][lL][yY]",

@@ -36,26 +36,35 @@ Parameters:
 =end
 	def get_daily(client)
 		data = client.daily_report
-		message = "<p>Daily Missions as of #{Time.now}:
+		message = "<pre>Daily Missions as of #{Time.now}:
 
 		\tStory: #{client.activity_search(data['dailyChapterHashes'].first)}
 		
-		\tCrucible Playlist: #{client.activity_search(data['dailyCrucibleHash'])}
+		\tCrucible Playlist: #{client.activity_search(data['dailyCrucibleHash'])}</pre>"
 
-		\tArmsday: #{data['armsDay']['active']}</p>"
+		#\tArmsday: #{data['armsDay']['active']}</p>"
 
 		message
 	end
 
 	def get_nightfall(client)
 		data = client.daily_report
-		message = "This weeks NightFall is as follows:<br><br>#{client.activity_search(data['nightfall']['specificActivityHash'])}"
+		nightfall = client.activity_search(data['nightfall']['specificActivityHash'],false)
+		skulls = []
+    nightfall['skulls'].each do |skull|
+      skulls << skull['displayName']
+    end
+		message = "This weeks NightFall is as follows:<br>
+		<br>
+		<a href='https://bungie.net#{nightfall[:pgcrImage]}'>#{nightfall[:activityName]}</a><br>
+		#{nightfall[:activityName]}: #{nightfall[:activityDescription]}<br>
+		Skulls: #{skulls.join(', ')}"
 		message
 	end
 
-	def get_strike(client)
+	def get_crucible(client)
 		data = client.daily_report
-		message = "This weeks Heroic Strike is as follows:<br><br>#{client.activity_search(data['heroicStrike']['activityBundleHash'])}"
+		message = "This weeks Crucible Playlist is as follows:<br><br>#{client.activity_search(data['weeklyCrucible'].first['activityBundleHash'])}"
 		message
 	end
 
@@ -81,7 +90,7 @@ Parameters:
   		response = "Hello, #{sender}. I am Kadi 55-30, Tower Postmaster. I am here to provide you will all requiste information for your trials as a Guardian. Please execute protocol '!help' for further assistance."
   		color = 'green'
   	when "help"
-  		response = "Use !daily, !hello, !help, !item(pending), !light(pending), !nightfall, !strike or !xur. Feedback/issues may be sent to the Hellmouth for processing."
+  		response = "Use !daily, !hello, !help, !item(pending), !light(pending), !nightfall, !crucible or !xur. Feedback/issues may be sent to the Hellmouth for processing."
   		color = 'yellow'
   	when "item"
   		response = "help"
@@ -92,8 +101,8 @@ Parameters:
   	when "nightfall"
   		response = get_nightfall(destiny)
   		color = 'purple'
-  	when "strike"
-  		response = get_strike(destiny)
+  	when "crucible"
+  		response = get_crucible(destiny)
   		color = 'red'
   	when "xur"
   		response = "BETA: Xur details are: <br><br> #{destiny.xur}"
