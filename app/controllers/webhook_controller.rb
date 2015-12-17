@@ -63,7 +63,7 @@ Parameters:
     	end
   	end
 		message = "This weeks NightFall is as follows:<br>
-		<img src=\"http://bungie.net#{nightfall[:pgcrImage]}\"><br>
+		<img src=\"http://bungie.net/#{nightfall[:pgcrImage]}\"><br>
 		#{nightfall[:activityName]}: #{nightfall[:activityDescription]}<br>
 		Skulls: #{skulls.join(', ')}"
 		message
