@@ -55,18 +55,18 @@ Parameters:
 
 	def get_nightfall(client)
 		data = client.daily_report
-		nightfall = client.activity_search(data['nightfall']['specificActivityHash'],false)
+		nightfall = client.activity_search(data['nightfall']['specificActivityHash'],true)
 		skulls = []
-		unless nightfall[:skulls].nil? || nightfall[:skulls].empty?
-    	nightfall[:skulls].each do |skull|
-      	skulls << skull[:displayName]
+		unless nightfall['skulls'].nil? || nightfall['skulls'].empty?
+    	nightfall['skulls'].each do |skull|
+      	skulls << skull['displayName']
     	end
   	end
 		message = "This weeks NightFall is as follows:<br>
-		<img src=\"http://bungie.net/#{nightfall[:pgcrImage]}\"><br>
-		#{nightfall[:activityName]}: #{nightfall[:activityDescription]}<br>
+		<img src=\"http://bungie.net/#{nightfall['pgcrImage']}\"><br>
+		#{nightfall['activityName']}: #{nightfall['activityDescription']}<br>
 		Skulls: #{skulls.join(', ')}
-    \"http://bungie.net/#{nightfall[:pgcrImage]}\""
+    \"http://bungie.net/#{nightfall['pgcrImage']}\""
 		message
 	end
 
