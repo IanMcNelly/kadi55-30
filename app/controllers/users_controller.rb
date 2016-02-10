@@ -67,7 +67,7 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user.destroy
-    redirect_to('https://coupa.hipchat.com/addons/')
+    redirect_to('https://hipchat.com/addons/')
     #render :nothing => true, status: :ok
   end
 
@@ -79,11 +79,11 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      #Parameters: {"oauthId"=>"10637af2-244f-4f3e-915c-f0021a2c7429", 
+      #Parameters: {"oauthId"=>"xxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx", 
       #             "capabilitiesUrl"=>"https://api.hipchat.com/v2/capabilities", 
-      #             "roomId"=>2199252, 
-      #             "groupId"=>2002, 
-      #             "oauthSecret"=>"w0fKHhwizukYzfYFRIiH4IPdaAFG3OIgVl2kXCnh", 
+      #             "roomId"=>1234567, 
+      #             "groupId"=>1234, 
+      #             "oauthSecret"=>"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", 
       #             "user"=>{}
       #}
       params.permit(:oauthId, :capabilitiesUrl, :roomId, :groupId, :oauthSecret, :user)

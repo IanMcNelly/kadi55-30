@@ -25,18 +25,15 @@ class WebhookController < ApplicationController
 	def get_nightfall(client)
 		
     nightfall = client.nightfall(false)
-		# skulls = []
-		# unless nightfall['skulls'].nil? || nightfall['skulls'].empty?
-    #   	nightfall['skulls'].each do |skull|
-    #     	skulls << skull['displayName']
-    #   	end
-    # end
     activity = nightfall[:specificActivity]
+    
 		message = "This weeks NightFall is as follows: <br>
 		<img src=\"http://bungie.net/#{activity[:pgcrImage]}\"><br>
 		#{activity}: #{activity['activityDescription']}<br>
 		Skulls: #{nightfall[:activeSkulls].join(', ')}"
+
 		message
+
 	end
 
 	def get_crucible(client)
