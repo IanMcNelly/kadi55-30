@@ -1,4 +1,3 @@
-== README
 
 #Kadi 55-30
 
