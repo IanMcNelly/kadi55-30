@@ -64,8 +64,8 @@ Parameters:
     # end
     activity = nightfall[:specificActivity]
 		message = "This weeks NightFall is as follows: <br>
-		<img src=\"http://bungie.net/#{nightfall[:pgcrImage]}\"><br>
-		#{activity['activityName']}: #{activity['activityDescription']}<br>
+		<img src=\"http://bungie.net/#{activity[:pgcrImage]}\"><br>
+		#{activity}: #{activity['activityDescription']}<br>
 		Skulls: #{nightfall[:activeSkulls].join(', ')}"
 		message
 	end
