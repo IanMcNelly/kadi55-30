@@ -1,7 +1,6 @@
 class WebhookController < ApplicationController
-  # TODO: Figure out better way to do this
+
   skip_before_filter  :verify_authenticity_token
-  @@token = destiny_api_token
 
 	def get_daily(client)
 		data = client.daily_report
@@ -26,7 +25,7 @@ class WebhookController < ApplicationController
 		
     nightfall = client.nightfall(false)
     activity = nightfall[:specificActivity]
-    
+
 		message = "This weeks NightFall is as follows: <br>
 		<img src=\"http://bungie.net/#{activity[:pgcrImage]}\"><br>
 		#{activity}: #{activity['activityDescription']}<br>
@@ -54,7 +53,7 @@ class WebhookController < ApplicationController
   	end
   	room = user.room_id
   	client = HipChat::Client.new(user.access_token, :api_version => 'v2')
-  	destiny = Destiny::Client.new(@@token)
+  	destiny = Destiny::Client.new(destiny_api_token)
   	response = nil
   	color = 'green'
   	case params[:hookname]
