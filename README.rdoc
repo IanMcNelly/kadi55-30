@@ -1,9 +1,11 @@
 == README
 
 # Kadi 55-30
+
 ### A Destiny Hipchat Integration
 
 [![Build Status][BS img]][Build Status]
+
 [Build Status]: https://travis-ci.org/elgalu/boolean_class
 
 ## About
