@@ -5,45 +5,20 @@ class UsersControllerTest < ActionController::TestCase
     @user = users(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:users)
-  end
+  # test "should create user" do
+  #   assert_difference('User.count') do
+  #     post :create, { room_id: @user.room_id, access_token: @user.access_token, expires_at: @user.expires_at, oauth_id: @user.oauth_id, secret: @user.secret, capabilitiesUrl: "https://api.hipchat.com/v2/capabilities" }.to_json
+  #   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
+  #   assert_redirected_to user_path(assigns(:user))
+  # end
 
-  test "should create user" do
-    assert_difference('User.count') do
-      post :create, user: { access_token: @user.access_token, expires_in: @user.expires_in, oauth_id: @user.oauth_id, secret: @user.secret }
-    end
 
-    assert_redirected_to user_path(assigns(:user))
-  end
+  # test "should destroy user" do
+  #   assert_difference('User.count', -1) do
+  #     delete :destroy, id: @user
+  #   end
 
-  test "should show user" do
-    get :show, id: @user
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @user
-    assert_response :success
-  end
-
-  test "should update user" do
-    patch :update, id: @user, user: { access_token: @user.access_token, expires_in: @user.expires_in, oauth_id: @user.oauth_id, secret: @user.secret }
-    assert_redirected_to user_path(assigns(:user))
-  end
-
-  test "should destroy user" do
-    assert_difference('User.count', -1) do
-      delete :destroy, id: @user
-    end
-
-    assert_redirected_to users_path
-  end
+  #   assert_redirected_to users_path
+  # end
 end
