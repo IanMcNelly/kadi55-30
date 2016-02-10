@@ -10,11 +10,20 @@
 
 ## About
 
-This application is designed to be installed to a HipChat room and provide useful tools for the Destiny Player.
+This application is designed to be installed to a HipChat room and provide useful tools for the Destiny Player. 
+
+## Installation
 
 This has been set up to use environment variables for the api key. To set this (if using heroku) use:
 
+```
   heroku config:set DESTINY_API_KEY=<destiny-api-key>
+```
+
+
+## Supported Commands
+
+For information about the commands please send !help
 
 
 [travis pull requests]: https://travis-ci.org/guardians-of-savings/kadi55-30/pull_requests
