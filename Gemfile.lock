@@ -55,15 +55,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
-    columnize (0.9.0)
     concurrent-ruby (1.0.0)
     debug_inspector (0.0.2)
-    debugger (1.6.8)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.3.5)
-    debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.3.8)
+    dotenv (2.1.0)
     erubis (2.7.0)
     execjs (2.6.0)
     globalid (0.3.6)
@@ -166,8 +160,8 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.1.0)
-  debugger
   destiny_rb!
+  dotenv
   hipchat
   jbuilder (~> 2.0)
   jquery-rails
@@ -182,4 +176,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
