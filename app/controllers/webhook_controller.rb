@@ -35,7 +35,6 @@ class WebhookController < ApplicationController
 		<img src=\"http://bungie.net/#{activity[:pgcrImage]}\"><br>
 		#{activity[:activityName]}: #{activity[:activityDescription]}<br>
 		<table>#{skull_pics}</tr><tr>#{skull_names}</tr></table>"
-    puts skull_table
 		message
 
 	end
