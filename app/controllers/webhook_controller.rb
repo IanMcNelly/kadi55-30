@@ -25,14 +25,16 @@ class WebhookController < ApplicationController
 		
     nightfall = client.nightfall(false)
     activity = nightfall[:specificActivity]
-    skull_table = ""
+    skull_pics = ""
+    skull_names = ""
     nightfall[:activeSkulls].each do |skull|
-      skull_table = skull_table + "<img src=\"http://bungie.net/#{skull[:icon]}\" title=\"#{skull[:name]}: #{skull[:description]}\" alt=\"#{skull[:name]}: #{skull[:description]}\">"
+      skull_pics = skull_pics + "<td><img src=\"http://bungie.net/#{skull[:icon]}\"></td>"
+      skull_names = skull_names + "<td>#{skull[:name]}</td>"
     end
 		message = "This weeks NightFall is as follows: <br>
 		<img src=\"http://bungie.net/#{activity[:pgcrImage]}\"><br>
 		#{activity[:activityName]}: #{activity[:activityDescription]}<br>
-		Skulls: #{skull_table}"
+		<table>#{skull_pics}</tr><tr>#{skull_names}</tr></table>"
     puts skull_table
 		message
 
