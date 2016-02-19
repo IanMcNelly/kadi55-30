@@ -28,8 +28,8 @@ class WebhookController < ApplicationController
     skull_pics = ""
     skull_names = ""
     nightfall[:activeSkulls].each do |skull|
-      skull_pics = skull_pics + "<td><img src=\"http://bungie.net/#{skull[:icon]}\"></td>"
-      skull_names = skull_names + "<td>#{skull[:name]}</td>"
+      skull_pics = skull_pics + "<td style=\"width:100px\"><img src=\"http://bungie.net/#{skull[:icon]}\"></td>"
+      skull_names = skull_names + "<td style=\"width:100px\">#{skull[:name]}</td>"
     end
 		message = "This weeks NightFall is as follows: <br>
 		<img src=\"http://bungie.net/#{activity[:pgcrImage]}\"><br>
