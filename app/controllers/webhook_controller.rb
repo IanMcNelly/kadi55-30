@@ -55,7 +55,7 @@ class WebhookController < ApplicationController
     user = response["displayName"]
     characters = client.class.get("/#{membership_type}/Account/#{destiny_id}/Items", headers: headers)["Response"]["data"]["characters"]
     specficic_character = characters[character]["characterBase"]
-    message = "User #{user} has a #{character_class(specficic_character["classType"]).capitalize} with Light Level: #{specficic_character["stats"]["STAT_LIGHT"]["value"]}"
+    message = "User #{user} has a #{client.character_class(specficic_character["classType"]).capitalize} with Light Level: #{specficic_character["stats"]["STAT_LIGHT"]["value"]}"
     message
   end
 
