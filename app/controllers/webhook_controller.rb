@@ -46,7 +46,7 @@ class WebhookController < ApplicationController
       "Syntax is !light gamertag <characterIndex>"
     end
     user = message[1]
-    character = message[2].nil? ? 0 : message[2]
+    character = message[2].nil? ? 0 : message[2].to_i
     puts "in get_light_level for #{user}"
     response = client.class.get("/SearchDestinyPlayer/all/#{user}", headers: headers)["Response"]
     puts response
@@ -56,6 +56,7 @@ class WebhookController < ApplicationController
     characters = client.class.get("/#{membership_type}/Account/#{destiny_id}/Items", headers: headers)["Response"]["data"]["characters"]
     specficic_character = characters[character]["caracterBase"]
     message = "User #{user} has a #{character_class(specficic_character["classType"])} with Light Level: #{specficic_character["stats"]["STAT_LIGHT"]}"
+    message
   end
 
 	def get_crucible(client)
