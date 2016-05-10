@@ -46,7 +46,9 @@ class WebhookController < ApplicationController
     end
     user = message[1]
     character = message[2].nil? ? 0 : message[2]
+    puts "in get_light_level for #{user}"
     response = client.class.get("/SearchDestinyPlayer/all/#{user}")["Response"]
+    puts response
     destiny_id = response["membershipId"]
     membership_type = reponse["membershipType"]
     characters = client.class.get("/#{membership_type}/Account/#{destiny_id}/Items")["Response"]["data"]["characters"]
