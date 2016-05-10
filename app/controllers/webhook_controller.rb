@@ -41,17 +41,18 @@ class WebhookController < ApplicationController
 
   def get_light_level(client, message)
     message = message.split(' ')
+    headers = { 'X-API-Key' => destiny_api_token, 'Content-Type' => 'application/json' }
     if message.count < 2
       "Syntax is !light gamertag <characterIndex>"
     end
     user = message[1]
     character = message[2].nil? ? 0 : message[2]
     puts "in get_light_level for #{user}"
-    response = client.class.get("/SearchDestinyPlayer/all/#{user}")["Response"]
+    response = client.class.get("/SearchDestinyPlayer/all/#{user}", headers)["Response"]
     puts response
     destiny_id = response["membershipId"]
     membership_type = reponse["membershipType"]
-    characters = client.class.get("/#{membership_type}/Account/#{destiny_id}/Items")["Response"]["data"]["characters"]
+    characters = client.class.get("/#{membership_type}/Account/#{destiny_id}/Items", headers)["Response"]["data"]["characters"]
     specficic_character = characters[character]["caracterBase"]
     message = "User #{user} has a #{character_class(specficic_character["classType"])} with Light Level: #{specficic_character["stats"]["STAT_LIGHT"]}"
   end
