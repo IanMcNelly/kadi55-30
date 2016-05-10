@@ -48,14 +48,14 @@ class WebhookController < ApplicationController
     user = message[1]
     character = message[2].nil? ? 0 : message[2].to_i
     puts "in get_light_level for #{user}"
-    response = client.class.get("/SearchDestinyPlayer/all/#{user}", headers: headers)["Response"]
+    response = client.class.get("/SearchDestinyPlayer/all/#{user}", headers: headers)["Response"].first
     puts response
     destiny_id = response["membershipId"]
-    membership_type = reponse["membershipType"]
+    membership_type = response["membershipType"]
     user = response["displayName"]
     characters = client.class.get("/#{membership_type}/Account/#{destiny_id}/Items", headers: headers)["Response"]["data"]["characters"]
-    specficic_character = characters[character]["caracterBase"]
-    message = "User #{user} has a #{character_class(specficic_character["classType"])} with Light Level: #{specficic_character["stats"]["STAT_LIGHT"]}"
+    specficic_character = characters[character]["characterBase"]
+    message = "User #{user} has a #{character_class(specficic_character["classType"]).capitalize} with Light Level: #{specficic_character["stats"]["STAT_LIGHT"]["value"]}"
     message
   end
 
