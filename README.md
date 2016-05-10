@@ -20,6 +20,7 @@ This has been set up to use environment variables for the api key. To set this (
   heroku config:set DESTINY_API_KEY=<destiny-api-key>
 ```
 
+Then simply install the ingration using the descriptor: YOUR-HOSTED-URL.com/descriptor
 
 ## Supported Commands
 

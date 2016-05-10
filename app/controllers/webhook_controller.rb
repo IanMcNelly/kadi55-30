@@ -39,6 +39,21 @@ class WebhookController < ApplicationController
 
 	end
 
+  def get_light_level(client, message)
+    message = message.split(' ')
+    if message.count < 2
+      "Syntax is !light gamertag <characterIndex>"
+    end
+    user = message[1]
+    character = message[2].nil? ? 0 : message[2]
+    response = client.class.get("/SearchDestinyPlayer/all/#{user}")["Response"]
+    destiny_id = response["membershipId"]
+    membership_type = reponse["membershipType"]
+    characters = client.class.get("/#{membership_type}/Account/#{destiny_id}/Items")["Response"]["data"]["characters"]
+    specficic_character = characters[character]["caracterBase"]
+    message = "User #{user} has a #{character_class(specficic_character["classType"])} with Light Level: #{specficic_character["stats"]["STAT_LIGHT"]}"
+  end
+
 	def get_crucible(client)
 		data = client.daily_report
 		message = "This weeks Crucible Playlist is as follows:<br><br>#{client.activity_search(data['weeklyCrucible'].first['activityBundleHash'])}"
@@ -74,7 +89,7 @@ class WebhookController < ApplicationController
   		response = "help"
   		color = 'green'
   	when "light"
-  		response = "help"
+  		response = get_light_level(destiny, message)
   		color = 'yellow'
   	when "nightfall"
   		response = get_nightfall(destiny)
