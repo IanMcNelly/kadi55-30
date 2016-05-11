@@ -50,7 +50,7 @@ class WebhookController < ApplicationController
                  nil
                end
     puts response
-    if response.nil?
+    if response.nil? || response.empty?
       message = "User #{user} not found. Please ensure it is a valid gamertag."
       return message
     end
@@ -64,7 +64,7 @@ class WebhookController < ApplicationController
                    # puts e
                    nil
                  end
-    if characters.nil?
+    if characters.nil? || characters.empty?
       message = "No characters found for User #{user}"
       return message
     end
