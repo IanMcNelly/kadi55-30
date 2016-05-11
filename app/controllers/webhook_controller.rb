@@ -51,7 +51,7 @@ class WebhookController < ApplicationController
                end
     puts response
     if response.nil?
-      mesage = "User #{user} not found. Please ensure it is a valid gamertag."
+      message = "User #{user} not found. Please ensure it is a valid gamertag."
       message
     end
     response = response.first
