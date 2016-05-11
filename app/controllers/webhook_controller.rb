@@ -46,7 +46,7 @@ class WebhookController < ApplicationController
     response = begin
                  client.class.get("/SearchDestinyPlayer/all/#{user}", headers: headers)['Response']
                rescue => e
-                  puts e
+                  #puts e
                   nil
                end
     puts response
@@ -61,7 +61,7 @@ class WebhookController < ApplicationController
     characters = begin
                    client.class.get("/#{membership_type}/Account/#{destiny_id}/Items", headers: headers)['Response']['data']['characters']
                  rescue => e
-                   puts e
+                   #puts e
                    nil
                  end
     if characters.nil?
