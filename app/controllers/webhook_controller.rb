@@ -46,13 +46,13 @@ class WebhookController < ApplicationController
     response = begin
                  client.class.get("/SearchDestinyPlayer/all/#{user}", headers: headers)['Response']
                rescue => e
-                  #puts e
-                  nil
+                 # puts e
+                 nil
                end
     puts response
     if response.nil?
       message = "User #{user} not found. Please ensure it is a valid gamertag."
-      message
+      return message
     end
     response = response.first
     destiny_id = response['membershipId']
@@ -61,12 +61,12 @@ class WebhookController < ApplicationController
     characters = begin
                    client.class.get("/#{membership_type}/Account/#{destiny_id}/Items", headers: headers)['Response']['data']['characters']
                  rescue => e
-                   #puts e
+                   # puts e
                    nil
                  end
     if characters.nil?
       message = "No characters found for User #{user}"
-      message
+      return message
     end
     specficic_character = characters[character]['characterBase']
     message = "User #{user} has a #{client.character_class(specficic_character['classType']).capitalize} with Light Level: #{specficic_character['stats']['STAT_LIGHT']['value']}"
