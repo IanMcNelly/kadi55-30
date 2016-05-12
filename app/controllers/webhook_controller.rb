@@ -69,6 +69,10 @@ class WebhookController < ApplicationController
       return message
     end
     specficic_character = characters[character]['characterBase']
+    if specficic_character.nil? || specficic_character.empty?
+      message = "User #{user} has only #{characters.count} characters. You requested character ##{character + 1}"
+      return message
+    end
     message = "User #{user} has a #{client.character_class(specficic_character['classType']).capitalize} with Light Level: #{specficic_character['stats']['STAT_LIGHT']['value']}"
     message
   end
@@ -102,7 +106,7 @@ class WebhookController < ApplicationController
       response = "Hello, #{sender}. I am Kadi 55-30, Tower Postmaster. I am here to provide you will all requiste information for your trials as a Guardian. Please execute protocol '!help' for further assistance."
       color = 'green'
     when 'help'
-      response = 'Use !daily, !hello, !help, !item(pending), !light(pending), !nightfall, !crucible or !xur. Feedback/issues may be sent to the Hellmouth for processing.'
+      response = 'Use !daily, !hello, !help, !item(pending), !light gamertag <character-index>, !nightfall, !crucible or !xur. Feedback and issues may be sent to the Hellmouth for processing.'
       color = 'yellow'
     when 'item'
       response = 'help'
@@ -117,7 +121,7 @@ class WebhookController < ApplicationController
       response = get_crucible(destiny)
       color = 'red'
     when 'xur'
-      response = "BETA: Xur details are: <br><br> #{destiny.xur}"
+      response = "BETA: Xur details are: <br><br> #{destiny.xur(true)}"
       color = 'gray'
     else
       puts "EXCEPTION! INVALID HOOKNAME: #{params[:hookname]}"
