@@ -21,7 +21,7 @@ class WebhookController < ApplicationController
   end
 
   def get_rice()
-    card = {
+    card = '{
       "style": "image",
       "id": "172fe15d-d72e-4f78-8712-0ec74e7f9aa3",
       "url": "http://i.imgur.com/CcBjOSZ.png",
@@ -32,7 +32,7 @@ class WebhookController < ApplicationController
         "width": 712,
         "height": 520
       }
-    }
+    }'.to_json
     response = "<img src=\"http://i.imgur.com/CcBjOSZ.png\">"
     card, response
   end
