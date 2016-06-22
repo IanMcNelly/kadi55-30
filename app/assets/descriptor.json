@@ -56,6 +56,16 @@
             "pattern": "^![hH][eE][lL][lL][oO]",
             "event": "room_message",
             "name": "Hello"
+        }, {
+            "url": "https://mighty-meadow-7891.herokuapp.com/webhook/rice",
+            "pattern": "^![rR][iI][cC][eE]",
+            "event": "room_message",
+            "name": "Rice"
+        }, {
+            "url": "https://mighty-meadow-7891.herokuapp.com/webhook/approvals",
+            "pattern": "^![aA][pP][rR][oO][vV][aA][lL][sS]",
+            "event": "room_message",
+            "name": "Approvals"
         }]
     }
 }

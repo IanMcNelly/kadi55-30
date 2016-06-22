@@ -20,6 +20,23 @@ class WebhookController < ApplicationController
     message
   end
 
+  def get_rice()
+    card = {
+      "style": "image",
+      "id": "172fe15d-d72e-4f78-8712-0ec74e7f9aa3",
+      "url": "http://i.imgur.com/CcBjOSZ.png",
+      "title": "I JUST WANT YOU TO BE PROUD OF ME",
+      "thumbnail": {
+        "url": "http://i.imgur.com/CcBjOSZ.png",
+        "url@2x": "http://i.imgur.com/CcBjOSZ.png",
+        "width": 712,
+        "height": 520
+      }
+    }
+    response = "<img src=\"http://i.imgur.com/CcBjOSZ.png\">"
+    card, response
+  end
+
   def get_nightfall(client)
     nightfall = client.nightfall(false)
     activity = nightfall[:specificActivity]
@@ -96,7 +113,7 @@ class WebhookController < ApplicationController
     room = user.room_id
     client = HipChat::Client.new(user.access_token, api_version: 'v2')
     destiny = Destiny::Client.new(destiny_api_token)
-    response = nil
+    response = card = nil
     color = 'green'
     case params[:hookname]
     when 'daily'
@@ -123,6 +140,8 @@ class WebhookController < ApplicationController
     when 'xur'
       response = "BETA: Xur details are: <br><br> #{destiny.xur(true)}"
       color = 'gray'
+    when 'rice'
+      formatted_card, response = get_rice
     else
       puts "EXCEPTION! INVALID HOOKNAME: #{params[:hookname]}"
       client[room.to_s].send('ERR', "EXCEPTION! INVALID HOOKNAME: #{params[:hookname]}", color: 'red', notify: true)
@@ -131,7 +150,7 @@ class WebhookController < ApplicationController
 
     response ||= "Sending generic response to message: #{message}, from #{sender}"
     # Send response message to HipChat
-    client[room.to_s].send('', response, color: color, notify: true)
+    client[room.to_s].send('', response, color: color, notify: true, card: formatted_card)
 
     # Thank the nice webhook
     render nothing: true, status: :ok
