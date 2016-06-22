@@ -34,7 +34,7 @@ class WebhookController < ApplicationController
       }
     }'.to_json
     response = "<img src=\"http://i.imgur.com/CcBjOSZ.png\">"
-    card, response
+    [card, response]
   end
 
   def get_nightfall(client)
