@@ -29,8 +29,8 @@ class WebhookController < ApplicationController
       "thumbnail": {
         "url": "http://i.imgur.com/CcBjOSZ.png",
         "url@2x": "http://i.imgur.com/CcBjOSZ.png",
-        "width": 712,
-        "height": 520
+        "width": 356,
+        "height": 260
       }
     }'.to_json
     response = "<img src=\"http://i.imgur.com/CcBjOSZ.png\">"
@@ -142,6 +142,7 @@ class WebhookController < ApplicationController
       color = 'gray'
     when 'rice'
       formatted_card, response = get_rice
+      color = 'red'
     else
       puts "EXCEPTION! INVALID HOOKNAME: #{params[:hookname]}"
       client[room.to_s].send('ERR', "EXCEPTION! INVALID HOOKNAME: #{params[:hookname]}", color: 'red', notify: true)
