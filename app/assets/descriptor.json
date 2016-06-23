@@ -63,7 +63,7 @@
             "name": "Rice"
         }, {
             "url": "https://mighty-meadow-7891.herokuapp.com/webhook/approvals",
-            "pattern": "^![aA][pP][rR][oO][vV][aA][lL][sS]",
+            "pattern": "^![aA][pP][pP][rR][oO][vV][aA][lL][sS]",
             "event": "room_message",
             "name": "Approvals"
         }]
