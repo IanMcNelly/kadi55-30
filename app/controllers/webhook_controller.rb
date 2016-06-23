@@ -248,14 +248,14 @@ class WebhookController < ApplicationController
     card = {
       style: 'application',
       format: 'medium',
-      id: 'getcoupainfo-from-room-#{@user.room_id}',
-      title: 'Coupa instance information missing for room #{@user.room_id}',
+      id: "getcoupainfo-from-room-#{@user.room_id}",
+      title: "Coupa instance information missing for room #{@user.room_id}",
       description: 'This integration requires you to populate the Coupa instance and API key for this instance.\n Please populate using the dialog below',
       attributes: [
         {
           value: {
             format: 'html'
-            label: '<a href='#' data-target='kadi.coupa-credentials'>Enter Coupa Values</a>',
+            label: "<a href='#' data-target='kadi.coupa-credentials'>Enter Coupa Values</a>",
             style: 'lozenge-complete'
           }
         }
