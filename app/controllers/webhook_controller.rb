@@ -245,22 +245,22 @@ class WebhookController < ApplicationController
 
   def coupa_setup
     return true unless @user.instance.nil? && @user.coupa_api_key.nil?
-    card = "{
-      'style': 'application',
-      'format': 'medium',
-      'id': 'getcoupainfo-from-room-#{@user.room_id}',
-      'title': 'Coupa instance information missing for room #{@user.room_id}',
-      'description': 'This integration requires you to populate the Coupa instance and API key for this instance.\n Please populate using the dialog below',
-      'attributes': [
+    card = {
+      style: 'application',
+      format: 'medium',
+      id: 'getcoupainfo-from-room-#{@user.room_id}',
+      title: 'Coupa instance information missing for room #{@user.room_id}',
+      description: 'This integration requires you to populate the Coupa instance and API key for this instance.\n Please populate using the dialog below',
+      attributes: [
         {
-          'value': {
-            'format': 'html'
-            'label': '<a href='#' data-target='kadi.coupa-credentials'>Enter Coupa Values</a>',
-            'style': 'lozenge-complete'
+          value: {
+            format: 'html'
+            label: '<a href='#' data-target='kadi.coupa-credentials'>Enter Coupa Values</a>',
+            style: 'lozenge-complete'
           }
         }
       ]
-    }".to_json
+    }
     @client[@user.room_id.to_s].send('', "Please enable cards to use this feature", {notify: true, card: card, color: 'red'})
     return false
   end
