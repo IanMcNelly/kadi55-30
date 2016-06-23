@@ -254,7 +254,7 @@ class WebhookController < ApplicationController
       attributes: [
         {
           value: {
-            format: 'html'
+            format: 'html',
             label: "<a href='#' data-target='kadi.coupa-credentials'>Enter Coupa Values</a>",
             style: 'lozenge-complete'
           }
