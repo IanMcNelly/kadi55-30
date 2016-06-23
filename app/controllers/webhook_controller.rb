@@ -37,6 +37,66 @@ class WebhookController < ApplicationController
     [card, response]
   end
 
+  def get_coupa_user(user_login)
+    # Query coupa for userID based on login
+    url = "#{@user.instance}/api/users?login=#{user_login}"
+    query_coupa(url, '//id')
+  end
+
+  def get_approvals(message)
+    return [nil, "Sending generic response to message: #{message}, Coupa credentials not set"] unless coupa_setup
+    message = message.split(' ')
+    login = id = nil
+    login = message.first.is_a?(Integer) ? nil : message.first
+    id = message.first unless login
+    offset = message[1] || '0'
+    id ||= get_coupa_user(login)
+
+    if id
+      # Query Coupa for approvals
+      url = "@user.instance/api/approvals?status=pending_approval&position=1&approver-id=#{id}"
+      response = query_coupa(url, '//approvals')
+
+      # Parse and send back card
+      object = response.at_xpath("//approvable-type")
+      approval_id = response.at_xpath('//id')
+      object_id = response.at_xpath('//approvable-id')
+
+      card = '{
+        "style": "application",
+        "url": "https://www.application.com/an-object",
+        "format": "medium",
+        "id": "db797dasa68-0aff-4ae8-83fc-2e72dbbasd1a707",
+        "title": "Sample application card",
+        "description": "This is a description of an application object.\nwith 2 lines of text",
+        "icon": {
+          "url": "http://bit.ly/1S9Z5dF"
+        },
+        "attributes": [
+          {
+            "label": "attribute1",
+            "value": {
+              "label": "value1"
+            }
+          },
+          {
+            "label": "attribute2",
+            "value": {
+              "icon": {
+                "url": "http://bit.ly/1S9Z5dF"
+              },
+              "label": "value2",
+              "style": "lozenge-complete"
+            }
+          }
+        ]
+      }'.to_json
+
+    end
+
+    
+  end
+
   def get_nightfall(client)
     nightfall = client.nightfall(false)
     activity = nightfall[:specificActivity]
@@ -103,15 +163,15 @@ class WebhookController < ApplicationController
   def parse
     puts "In webhook parse, for webhook: #{params[:hookname]}"
     Dotenv.load
-    user = User.find_by(oauth_id: params[:oauth_client_id])
+    @user = User.find_by(oauth_id: params[:oauth_client_id])
     message = params[:item][:message][:message]
     sender = params[:item][:message][:from][:name]
-    if Time.at(user.expires_at) <= Time.now
+    if Time.at(@user.expires_at) <= Time.now
       # Token is not valid, need new one
-      user = user.refresh_token
+      @user = @user.refresh_token
     end
-    room = user.room_id
-    client = HipChat::Client.new(user.access_token, api_version: 'v2')
+    room = @user.room_id
+    @client = HipChat::Client.new(@user.access_token, api_version: 'v2')
     destiny = Destiny::Client.new(destiny_api_token)
     response = card = nil
     color = 'green'
@@ -143,15 +203,17 @@ class WebhookController < ApplicationController
     when 'rice'
       formatted_card, response = get_rice
       color = 'red'
+    when 'approvals'
+      formatted_card, response = get_approvals(message)
     else
       puts "EXCEPTION! INVALID HOOKNAME: #{params[:hookname]}"
-      client[room.to_s].send('ERR', "EXCEPTION! INVALID HOOKNAME: #{params[:hookname]}", color: 'red', notify: true)
+      @client[room.to_s].send('ERR', "EXCEPTION! INVALID HOOKNAME: #{params[:hookname]}", color: 'red', notify: true)
       render nothing: true, status: :bad_request
     end
 
     response ||= "Sending generic response to message: #{message}, from #{sender}"
     # Send response message to HipChat
-    client[room.to_s].send('', response, color: color, notify: true, card: formatted_card)
+    @client[room.to_s].send('', response, color: color, notify: true, card: formatted_card)
 
     # Thank the nice webhook
     render nothing: true, status: :ok
@@ -162,4 +224,45 @@ class WebhookController < ApplicationController
   def destiny_api_token
     ENV.fetch('DESTINY_API_KEY', 'abc123')
   end
+
+  def query_coupa(url, xpath)
+    c = Curl::Easy.new(url)
+    c.headers["accept"] = "application/xml"
+    c.headers["x-coupa-api-key"] = "#{@user.coupa_api_key}"
+    c.http_get()
+    puts "Code is: #{c.response_code}"
+
+    if c.response_code != 200
+      puts "Bad request!"
+      puts "c.body"
+      return
+    end
+
+    parsed_response = Nokogiri::XML(c.body)
+    value = parsed_response.at_xpath(xpath).content
+    value
+  end
+
+  def coupa_setup
+    return true unless @user.instance.nil? && @user.coupa_api_key.nil?
+    card = "{
+      'style': 'application',
+      'format': 'medium',
+      'id': 'getcoupainfo-from-room-#{@user.room_id}',
+      'title': 'Coupa instance information missing for room #{@user.room_id}',
+      'description': 'This integration requires you to populate the Coupa instance and API key for this instance.\n Please populate using the dialog below',
+      'attributes': [
+        {
+          'value': {
+            'format': 'html'
+            'label': '<a href='#' data-target='kadi.coupa-credentials'>Enter Coupa Values</a>',
+            'style': 'lozenge-complete'
+          }
+        }
+      ]
+    }".to_json
+    @client[room.to_s].send('', "Please enable cards to use this feature", notify: true, card: card)
+    return false
+  end
+
 end
