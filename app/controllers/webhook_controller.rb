@@ -261,7 +261,7 @@ class WebhookController < ApplicationController
         }
       ]
     }".to_json
-    @client[@user.room_id.to_s].send('', "Please enable cards to use this feature", notify: true, card: card)
+    @client[@user.room_id.to_s].send('', "Please enable cards to use this feature", {notify: true, card: card})
     return false
   end
 
