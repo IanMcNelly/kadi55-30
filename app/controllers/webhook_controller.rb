@@ -261,7 +261,7 @@ class WebhookController < ApplicationController
         }
       ]
     }
-    @client[@user.room_id.to_s].send('', "", notify: true, card: card, color: 'random')
+    @client[@user.room_id.to_s].send('', "Please rds to use this featur", notify: true, card: card, color: 'random')
     return false
   end
 
