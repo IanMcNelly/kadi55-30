@@ -84,6 +84,6 @@ class UsersController < ApplicationController
     #             "oauthSecret"=>"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     #             "user"=>{}
     # }
-    params.permit(:oauthId, :capabilitiesUrl, :roomId, :groupId, :oauthSecret, :user)
+    params.permit(:oauthId, :capabilitiesUrl, :roomId, :groupId, :oauthSecret, :user, :instance, :coupa_api_key)
   end
 end

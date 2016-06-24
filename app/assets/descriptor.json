@@ -66,6 +66,56 @@
             "pattern": "^![aA][pP][pP][rR][oO][vV][aA][lL][sS]",
             "event": "room_message",
             "name": "Approvals"
-        }]
+        }],
+        "dialog": [{
+            "key": "kadi.coupa-credentials",
+            "title": {
+                "value": "Enter Coupa URL and API Key"
+            },
+            "url": "https://mighty-meadow-7891.herokuapp.com/dialog/coupa-credentials",
+            "options": {
+                "style": "warning",    
+                "primaryAction": {
+                    "name": {
+                        "value": "Submit"
+                    },
+                    "key": "kadi.coupa-credentials.submit",
+                    "enabled": false 
+                }
+            }
+        }, {
+            "key": "kadi.coupa-approve",
+            "title": {
+                "value": "Enter an Approval Affidavit"
+            },
+            "url": "https://mighty-meadow-7891.herokuapp.com/dialog/coupa-approve",
+            "options": {
+                "style": "warning",    
+                "primaryAction": {
+                    "name": {
+                        "value": "Submit"
+                    },
+                    "key": "kadi.coupa-approve.submit",
+                    "enabled": false 
+                }
+            }
+        }, {
+            "key": "kadi.coupa-reject",
+            "title": {
+                "value": "Enter a Reject Reason"
+            },
+            "url": "https://mighty-meadow-7891.herokuapp.com/dialog/coupa-reject",
+            "options": {
+                "style": "warning",    
+                "primaryAction": {
+                    "name": {
+                        "value": "Submit"
+                    },
+                    "key": "kadi.coupa-reject.submit",
+                    "enabled": false 
+                }
+            }
+        }
+        ]
     }
 }
