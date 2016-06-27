@@ -248,8 +248,8 @@ class WebhookController < ApplicationController
     card = {
       style: 'application',
       format: 'medium',
-      id: "getcoupainfo-from-room-#{room_id}",
-      title: "Coupa Instance Information Missing for Room #{room_id}",
+      id: "getcoupainfo-from-room-#{@user.room_id}",
+      title: "Coupa Instance Information Missing for Room #{@user.room_id}",
       description: 'This integration requires you to populate the Coupa instance and API key for this instance. Please populate using the dialog below',
       attributes: [
         {
