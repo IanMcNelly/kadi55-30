@@ -20,4 +20,12 @@ class DialogController < ApplicationController
 
   end
 
+  def parse
+    case params[:hookname]
+    when 'coupa_credentials'
+      coupa_credentials
+    else
+      render nothing: true, status: :bad_request
+    end
+  end
 end

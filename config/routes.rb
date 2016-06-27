@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   get 'descriptor' => 'descriptor#index'
   post 'webhook/*hookname' => 'webhook#parse'
-  get 'dialog/*dialogname' => 'dialog#dialogname'
+  get 'dialog/*dialogname' => 'dialog#parse'
   #post 'users/new' => 'users#create'
   #put 'users/update' =
 
