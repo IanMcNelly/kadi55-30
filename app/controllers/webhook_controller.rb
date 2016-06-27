@@ -248,17 +248,16 @@ class WebhookController < ApplicationController
     card = {
       style: 'application',
       format: 'medium',
-      id: "getcoupainfo-from-room-#{@user.room_id}",
-      title: "Coupa instance information missing for room #{@user.room_id}",
+      id: "getcoupainfo-from-room-#{room_id}",
+      title: "Coupa Instance Information Missing for Room #{room_id}",
       description: 'This integration requires you to populate the Coupa instance and API key for this instance. Please populate using the dialog below',
       attributes: [
         {
           label: 'Enter Coupa Values',
           value: {
-            format: 'html',
-            label: 'Here',
+            url: "hipchat://www.hipchat.com/room/#{@user.room_id}?target=kadi.credentials",
             style: 'lozenge-complete',
-            url: "hipchat://www.hipchat.com/room/#{@user.room_id}?target=kadi.credentials"
+            label: "Here"
           }
         }
       ]
