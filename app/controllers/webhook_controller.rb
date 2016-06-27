@@ -250,7 +250,13 @@ class WebhookController < ApplicationController
       format: 'medium',
       id: "getcoupainfo-from-room-#{@user.room_id}",
       title: "Coupa Instance Information Missing for Room #{@user.room_id}",
-      description: 'This integration requires you to populate the Coupa instance and API key for this instance. Please populate using the dialog <a href=\'#\' data-target=\'kadi.coupa-credentials\'>Here</a>',
+      description: {
+        format: 'html',
+        value: 'This integration requires you to populate the Coupa instance and API key for this instance. Please populate using the dialog <a href=\'#\' data-target=\'kadi.coupa-credentials\'>Here</a>
+        <a href=\'#\' data-target=\'kadi.coupa.credentials\'>with all .</a>
+        <a href=\'#\' data-target=\'kadi.coupa_credentials\'>with . and _</a>
+        <a href=\'#\' data-target=\'kadi_coupa_credentials\'>all _</a>'
+      },
       attributes: [
         {
           label: 'Enter Coupa Values',
