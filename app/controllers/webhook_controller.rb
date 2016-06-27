@@ -256,8 +256,8 @@ class WebhookController < ApplicationController
           value: {
             format: 'html',
             label: 'Enter Coupa Values',
-            style: 'lozenge-complete'
-            url: "hipchat://www.hipchat.com/room/#{@user.room_id}?target=kadi.credentials",
+            style: 'lozenge-complete',
+            url: "hipchat://www.hipchat.com/room/#{@user.room_id}?target=kadi.credentials"
           }
         }
       ]
