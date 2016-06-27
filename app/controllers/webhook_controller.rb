@@ -252,29 +252,8 @@ class WebhookController < ApplicationController
       title: "Coupa Instance Information Missing for Room #{@user.room_id}",
       description: {
         format: 'html',
-        value: 'This integration requires you to populate the Coupa instance and API key for this instance. Please populate using the dialog <a href=\'#\' data-target=\'kadi.coupa-credentials\'>Here</a>
-        <a href=\'#\' data-target=\'kadi.coupa.credentials\'>with all .</a>
-        <a href=\'#\' data-target=\'kadi.coupa_credentials\'>with . and _</a>
-        <a href=\'#\' data-target=\'kadi_coupa_credentials\'>all _</a>'
-      },
-      attributes: [
-        {
-          label: 'Enter Coupa Values',
-          value: {
-            url: "hipchat://www.hipchat.com/room/#{@user.room_id}?target=kadi_coupa-credentials",
-            style: 'lozenge-complete',
-            label: "Here"
-          }
-        },
-        {
-          label: 'Enter Coupa Values2 with _',
-          value: {
-            url: "hipchat://www.hipchat.com/room/#{@user.room_id}?target=kadi_coupa_credentials",
-            style: 'lozenge-complete',
-            label: "Here"
-          }
-        }
-      ]
+        value: 'This integration requires you to populate the Coupa instance and API key for this instance. Please populate using the dialog <a href=\'#\' data-target=\'kadi.coupa-credentials\'>Here</a>'
+      }
     }
     @client[@user.room_id.to_s].send('', "Please rds to use this featur", notify: true, card: card, color: 'random')
     return false
