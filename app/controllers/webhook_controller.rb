@@ -253,7 +253,7 @@ class WebhookController < ApplicationController
       description: 'This integration requires you to populate the Coupa instance and API key for this instance. Please populate using the dialog below',
       attributes: [
         {
-          label: 'Enter Coupa Values'
+          label: 'Enter Coupa Values',
           value: {
             format: 'html',
             label: 'Here',
