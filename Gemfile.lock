@@ -60,7 +60,7 @@ GEM
     execjs (2.6.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
-    hipchat (1.5.2)
+    hipchat (1.5.3)
       httparty
       mimemagic
     httparty (0.13.7)
@@ -156,7 +156,7 @@ DEPENDENCIES
   curb
   destiny_rb!
   dotenv
-  hipchat
+  hipchat (= 1.5.3)
   jbuilder (~> 2.0)
   jquery-rails
   nokogiri
