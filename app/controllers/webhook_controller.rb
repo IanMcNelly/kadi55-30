@@ -21,18 +21,17 @@ class WebhookController < ApplicationController
   end
 
   def get_rice()
-    card = '{
-      "style": "image",
-      "id": "172fe15d-d72e-4f78-8712-0ec74e7f9aa3",
-      "url": "http://i.imgur.com/CcBjOSZ.png",
-      "title": "I JUST WANT YOU TO BE PROUD OF ME",
-      "thumbnail": {
-        "url": "http://i.imgur.com/CcBjOSZ.png",
-        "url@2x": "http://i.imgur.com/CcBjOSZ.png",
-        "width": 356,
-        "height": 260
+    card = {
+      style: "image",
+      id: "172fe15d-d72e-4f78-8712-0ec74e7f9aa3",
+      url: "http://i.imgur.com/CcBjOSZ.png",
+      title: "I JUST WANT YOU TO BE PROUD OF ME",
+      thumbnail: {
+        url: "http://i.imgur.com/CcBjOSZ.png",
+        width: 356,
+        height: 260
       }
-    }'.to_json
+    }
     response = "<img src=\"http://i.imgur.com/CcBjOSZ.png\">"
     [card, response]
   end
