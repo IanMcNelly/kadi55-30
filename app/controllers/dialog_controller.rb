@@ -21,7 +21,7 @@ class DialogController < ApplicationController
   end
 
   def parse
-    case params[:hookname]
+    case params[:dialogname]
     when 'coupa_credentials'
       coupa_credentials
     else
