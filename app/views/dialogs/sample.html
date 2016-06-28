@@ -1,24 +1,32 @@
-<!doctype html>
-<html>
-<head>
-    <title>Sample add-on</title>
-  <!--The Atlassian User Interface library, to style your add-on so it's consistent with HipChat-->
-    <link rel="stylesheet" href="//aui-cdn.atlassian.com/aui-adg/5.8.14/css/aui.css" media="all">
-  <!--jQuery (optional)-->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <!--The cross domain messaging library, you need to import that to be able to use the HipChat Javascript API-->
-    <script src="https://www.hipchat.com/atlassian-connect/all.js"></script>
-</head>
-<body>
-
-  <section id="content" role="main" class="ac-content">
-  <div></div>
-    <div class="aui-message">
-       <p class="title">
-           <strong>Welcome to the future of Chat!</strong>
-       </p>
-       <p>This is a HipChat Dialog View. Same deal as the Sidebar View, we usually use them for interrupt flows.</p>
+<section role="dialog" id="demo-dialog" class="aui-layer aui-dialog2 aui-dialog2-medium" aria-hidden="false">
+    <!-- Dialog header -->
+    <header class="aui-dialog2-header">
+        <!-- The dialog's title -->
+        <h2 class="aui-dialog2-header-main">Always use sentence case</h2>
+        <!-- Actions to render on the right of the header -->
+        <div class="aui-dialog2-header-secondary">
+            <form class="aui" action="#">
+                <input id="demo-search" class="text" type="search" name="search">
+            </form>
+        </div>
+        <!-- Close icon -->
+        <a class="aui-dialog2-header-close">
+            <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">Close</span>
+        </a>
+    </header>
+    <!-- Main dialog content -->
+    <div class="aui-dialog2-content">
+        <p>Hello World</p>
     </div>
-  </section>
-</body>
-</html>
+    <!-- Dialog footer -->
+    <footer class="aui-dialog2-footer">
+        <!-- Actions to render on the right of the footer -->
+        <div class="aui-dialog2-footer-actions">
+            <button id="dialog-submit-button" class="aui-button aui-button-primary">OK</button>
+            <button id="dialog-next-button" class="aui-button">Next</button>
+            <button id="dialog-close-button" class="aui-button aui-button-link">Close</button>
+        </div>
+        <!-- Hint text is rendered on the left of the footer -->
+        <div class="aui-dialog2-footer-hint">this is a hint</div>
+    </footer>
+</section>

@@ -72,7 +72,7 @@
             "title": {
                 "value": "Enter Coupa URL and API Key for this Room"
             },
-            "url": "http://mighty-meadow-7891.herokuapp.com/dialog/coupa-credentials",
+            "url": "https://mighty-meadow-7891.herokuapp.com/dialog/coupa-credentials",
             "options": {
                 "style": "warning",    
                 "primaryAction": {
