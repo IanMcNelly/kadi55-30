@@ -5,7 +5,7 @@ class DialogController < ApplicationController
   def coupa_credentials
     @user = User.find_by(oauth_id: params[:oauth_client_id])
     #render template: "dialogs/coupa_credentials"
-    render file: "#{Rails.root.join('app', 'views', 'diaglogs', 'sample.html')}"
+    render file: "#{Rails.root.join('app', 'views', 'dialogs', 'sample.html')}"
   end
 
   def coupa_approval
