@@ -70,9 +70,9 @@
         "dialog": [{
             "key": "kadi.coupa-credentials",
             "title": {
-                "value": "Enter Coupa URL and API Key"
+                "value": "Enter Coupa URL and API Key for this Room"
             },
-            "url": "https://mighty-meadow-7891.herokuapp.com/dialog/coupa-credentials",
+            "url": "http://mighty-meadow-7891.herokuapp.com/dialog/coupa-credentials",
             "options": {
                 "style": "warning",    
                 "primaryAction": {
