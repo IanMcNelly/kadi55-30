@@ -22,7 +22,7 @@ class DialogController < ApplicationController
 
   def parse
     case params[:dialogname]
-    when 'coupa_credentials'
+    when 'coupa-credentials'
       coupa_credentials
     else
       render nothing: true, status: :bad_request
