@@ -4,7 +4,8 @@ class DialogController < ApplicationController
 
   def coupa_credentials
     @user = User.find_by(oauth_id: params[:oauth_client_id])
-    render template: "dialogs/coupa_credentials"
+    #render template: "dialogs/coupa_credentials"
+    render template: "dialogs/sample"
   end
 
   def coupa_approval
