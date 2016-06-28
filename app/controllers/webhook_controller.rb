@@ -252,7 +252,9 @@ class WebhookController < ApplicationController
       title: "Coupa Instance Information Missing for Room #{@user.room_id}",
       description: {
         format: 'html',
-        value: 'This integration requires you to populate the Coupa instance and API key for this instance. Please populate using the dialog <a href=\'#\' data-target=\'kadi.coupa-credentials\'>Here</a>'
+        value: 'This integration requires you to populate the Coupa instance and API key for this instance. Please populate using the dialog <a href=\'#\' data-target=\'kadi.coupa-credentials\'>Here</a>
+
+        <a href=\'#\' data-target=\'kadi.test\'>TEST REQUEST</a>'
       }
     }
     @client[@user.room_id.to_s].send('', "Please rds to use this featur", notify: true, card: card, color: 'red')

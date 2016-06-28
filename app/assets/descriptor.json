@@ -115,6 +115,15 @@
                     "enabled": false 
                 }
             }
+        }, {
+            "key": "kadi.test",
+            "title": {
+                "value": "Requestbin testin"
+            },
+            "url": "http://requestb.in/1fasd8f1",
+            "options": {
+                "style": "warning"
+            }
         }
         ]
     }
