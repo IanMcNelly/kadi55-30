@@ -9,7 +9,7 @@
     "capabilities": {
         "hipchatApiConsumer": {
             "fromName": "Kadi 55-30",
-            "scopes": ["send_notification", "view_messages", "send_message"]
+            "scopes": ["send_notification", "view_messages", "send_message", "view_group", "view_room", "admin_room"]
         },
         "installable": {
             "allowGlobal": false,
