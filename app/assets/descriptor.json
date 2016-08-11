@@ -68,7 +68,7 @@
             "name": "Approvals"
         }],
         "dialog": [{
-            "key": "kadi.coupa-credentials",
+            "key": "kadi-coupa-credentials",
             "title": {
                 "value": "Enter Coupa URL and API Key for this Room"
             },
@@ -116,11 +116,11 @@
                 }
             }
         }, {
-            "key": "kadi.test",
+            "key": "kadi-test",
             "title": {
                 "value": "Requestbin testin"
             },
-            "url": "http://requestb.in/1fasd8f1",
+            "url": "http://requestb.in/rhgarorh",
             "options": {
                 "style": "warning"
             }
