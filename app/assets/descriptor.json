@@ -27,7 +27,7 @@
             "event": "room_message",
             "name": "Nightfall"
         },{
-            "url": "https://mighty-meadow-7891.herokuapp.com/webhook/nightfall",
+            "url": "https://mighty-meadow-7891.herokuapp.com/webhook/drunk",
             "pattern": "^![dD][rR][uU][nN][kK]",
             "event": "room_message",
             "name": "Drunk"
