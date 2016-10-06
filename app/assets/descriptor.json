@@ -26,6 +26,11 @@
             "pattern": "^![nN][iI][gG][hH][tT][fF][aA][lL][lL]",
             "event": "room_message",
             "name": "Nightfall"
+        },{
+            "url": "https://mighty-meadow-7891.herokuapp.com/webhook/nightfall",
+            "pattern": "^![dD][rR][uU][nN][kK]",
+            "event": "room_message",
+            "name": "Drunk"
         }, {
             "url": "https://mighty-meadow-7891.herokuapp.com/webhook/crucible",
             "pattern": "^![cC][rR][uU][cC][iI][bB][lL][eE]",

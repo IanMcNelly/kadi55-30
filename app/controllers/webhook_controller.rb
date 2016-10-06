@@ -175,6 +175,9 @@ class WebhookController < ApplicationController
     response = card = nil
     color = 'green'
     case params[:hookname]
+    when 'drunk'
+      response = "Yes, Yes you are"
+      color = 'red'
     when 'daily'
       response = get_daily(destiny)
       color = 'red'
