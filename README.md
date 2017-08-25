@@ -1,7 +1,7 @@
 
-#Kadi 55-30
+# Kadi 55-30
 
-###A Destiny Hipchat Integration
+### A Destiny Hipchat Integration
 
 
 [![Build Status][BS img]][Build Status]
